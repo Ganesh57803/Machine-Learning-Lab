@@ -1,45 +1,64 @@
 import numpy as np 
 
-X = np.array(([2, 9], [1, 5], [3, 6]), dtype=float) 
-y = np.array(([92], [86], [89]), dtype=float)
+# Input data (features and target)
+input_data = np.array(([2, 9], [1, 5], [3, 6]), dtype=float) 
+target_output = np.array(([92], [86], [89]), dtype=float)
 
-X = X/np.amax(X,axis=0)  # Normalize
-y = y/100
+# Normalize input data and target output
+input_data = input_data / np.amax(input_data, axis=0)  
+target_output = target_output / 100
 
+# Sigmoid activation function
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-def sigmoid_grad(x):
+# Derivative of sigmoid (used for backpropagation)
+def sigmoid_derivative(x):
     return x * (1 - x)
 
-epoch = 1000
-eta = 0.2
-input_neurons = 2
-hidden_neurons = 3
-output_neurons = 1
+# Training parameters
+epochs = 1000        # Number of iterations
+learning_rate = 0.2  # Learning rate
 
-wh = np.random.uniform(size=(input_neurons, hidden_neurons)) 
-bh = np.random.uniform(size=(1, hidden_neurons))  
-wout = np.random.uniform(size=(hidden_neurons, output_neurons)) 
-bout = np.random.uniform(size=(1, output_neurons))
+# Network architecture
+num_input_neurons = 2      # Number of input neurons
+num_hidden_neurons = 3     # Number of hidden neurons
+num_output_neurons = 1     # Number of output neurons
 
-for i in range(epoch):
-    h_ip = np.dot(X, wh) + bh  # Dot product + bias
-    h_act = sigmoid(h_ip)  # Activation function
-    o_ip = np.dot(h_act, wout) + bout
-    output = sigmoid(o_ip)
+# Initialize weights and biases for the hidden layer and output layer
+weights_hidden = np.random.uniform(size=(num_input_neurons, num_hidden_neurons)) 
+bias_hidden = np.random.uniform(size=(1, num_hidden_neurons))  
 
-    Eo = y - output  # Error at output
-    outgrad = sigmoid_grad(output)
-    d_output = Eo * outgrad 
+weights_output = np.random.uniform(size=(num_hidden_neurons, num_output_neurons)) 
+bias_output = np.random.uniform(size=(1, num_output_neurons))
 
-    Eh = d_output.dot(wout.T)  # .T means transpose
-    hiddengrad = sigmoid_grad(h_act) 
-    d_hidden = Eh * hiddengrad
-    wout += h_act.T.dot(d_output) * eta 
-    wh += X.T.dot(d_hidden) * eta
+# Training loop (forward and backpropagation)
+for epoch in range(epochs):
+    # Forward Propagation
+    hidden_layer_input = np.dot(input_data, weights_hidden) + bias_hidden  # Input to hidden layer
+    hidden_layer_activation = sigmoid(hidden_layer_input)  # Output of hidden layer
+    
+    output_layer_input = np.dot(hidden_layer_activation, weights_output) + bias_output  # Input to output layer
+    predicted_output = sigmoid(output_layer_input)  # Final output (prediction)
+    
+    # Backpropagation (Error calculation and gradient update)
+    error_output_layer = target_output - predicted_output  # Error at output layer
+    output_gradient = sigmoid_derivative(predicted_output)  # Gradient of the output
+    delta_output = error_output_layer * output_gradient  # Delta for output layer
+    
+    # Error propagated back to hidden layer
+    error_hidden_layer = delta_output.dot(weights_output.T)  
+    hidden_layer_gradient = sigmoid_derivative(hidden_layer_activation)  
+    delta_hidden = error_hidden_layer * hidden_layer_gradient  # Delta for hidden layer
+    
+    # Update weights and biases using the gradients
+    weights_output += hidden_layer_activation.T.dot(delta_output) * learning_rate  
+    bias_output += np.sum(delta_output, axis=0, keepdims=True) * learning_rate
+    
+    weights_hidden += input_data.T.dot(delta_hidden) * learning_rate  
+    bias_hidden += np.sum(delta_hidden, axis=0, keepdims=True) * learning_rate
 
-print("Normalized Input: \n" + str(X))
-print("Actual Output: \n" + str(y))
-print("Predicted Output: \n" , output)
-
+# Output the results
+print("Normalized Input Data: \n" + str(input_data))
+print("Actual Output (Target): \n" + str(target_output))
+print("Predicted Output: \n" , predicted_output)
