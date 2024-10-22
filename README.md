@@ -17,7 +17,7 @@ This repository contains solutions for the Machine Learning Lab experiments. Eac
 3. ### Decision Tree (ID3 Algorithm)
    Write a program to demonstrate the working of a decision tree based on the **ID3 algorithm**. Use an appropriate dataset to build the decision tree and apply this knowledge to classify a new sample.
 
-   **Link to program**: [Decision Tree (ID3 Algorithm)](link_to_your_program)
+   **Link to program**: [Decision Tree (ID3 Algorithm)](Programs/ID3.py) -----------[Input CSV](Programs/ID3.csv)
 
 4. ### Artificial Neural Network (ANN)
    Build an **Artificial Neural Network** by implementing the backpropagation algorithm and test it using appropriate datasets.
