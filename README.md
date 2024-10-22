@@ -12,7 +12,7 @@ This repository contains solutions for the Machine Learning Lab experiments. Eac
 2. ### Candidate Elimination Algorithm
    For a given set of training data stored in a `.CSV` file, implement and demonstrate the **Candidate-Elimination algorithm** to output a description of the set of all hypotheses consistent with the training examples.
 
-   **Link to program**: [Candidate Elimination Algorithm](link_to_your_program)
+   **Link to program**: [Candidate Elimination Algorithm](Programs/candidate.py)
 
 3. ### Decision Tree (ID3 Algorithm)
    Write a program to demonstrate the working of a decision tree based on the **ID3 algorithm**. Use an appropriate dataset to build the decision tree and apply this knowledge to classify a new sample.
