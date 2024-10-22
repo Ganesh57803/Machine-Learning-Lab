@@ -31,7 +31,7 @@ This repository contains solutions for the Machine Learning Lab experiments. Eac
 6. ### Bayesian Network
    Write a program to construct a **Bayesian Network** considering medical data. This program should calculate the accuracy, precision, and recall for your dataset.
 
-   **Link to program**: [Bayesian Network]
+   **Link to program**: [Bayesian Network](Programs/bayes-network.py)--------[Input CSV](Programs/network.csv)
 
 ## Getting Started
 
