@@ -44,7 +44,7 @@ This repository contains solutions for the Machine Learning Lab experiments. Eac
 
 ### 9. **Locally Weighted Regression**
    - **Description**: This program implements non-parametric Locally Weighted Regression to fit data points to a curve, with appropriate graph plotting.
-   - **Link to the program**: [Locally Weighted Regression Program](Programs/locally_weighted_regression.py)
+   - **Link to the program**: [Locally Weighted Regression Program](Programs/regression.py)
    - **ML Library**: Implemented using Python libraries like `numpy` and `matplotlib` for regression and graphing.
 
 ## Getting Started

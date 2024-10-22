@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning Lab Experiments</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .file-row {
+      margin-bottom: 10px;
+    }
+
+    .button {
+      margin-right: 5px;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      padding: 20px;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
+      max-height: 80vh; /* Limit the height of the popup */
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Machine Learning Lab Experiments</h1>
+  <div id="file-list"></div>
+  
+  <div class="overlay" id="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popup">
+    <h2 id="popup-title"></h2>
+    <pre id="popup-content"></pre>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    // Array of file programs with links and descriptions
+    const programs = [
+      {
+        title: 'Find-S Algorithm',
+        programLink: 'Programs/first-find-s.py',
+        csvLink: 'Programs/dataset-1.csv',
+        description: 'Implement and demonstrate the Find-S algorithm for finding the most specific hypothesis based on a given set of training data samples.'
+      },
+      {
+        title: 'Candidate Elimination Algorithm',
+        programLink: 'Programs/candidate.py',
+        csvLink: 'Programs/dataset-1.csv',
+        description: 'Implement and demonstrate the Candidate-Elimination algorithm to output a description of the set of all hypotheses consistent with the training examples.'
+      },
+      {
+        title: 'Decision Tree (ID3 Algorithm)',
+        programLink: 'Programs/ID3.py',
+        csvLink: 'Programs/ID3.csv',
+        description: 'Demonstrate the working of a decision tree based on the ID3 algorithm.'
+      },
+      {
+        title: 'Artificial Neural Network (ANN)',
+        programLink: 'Programs/ANN.py',
+        description: 'Build an Artificial Neural Network by implementing the backpropagation algorithm.'
+      },
+      {
+        title: 'Naive Bayes Classifier',
+        programLink: 'Programs/NaiveBayes.py',
+        csvLink: 'Programs/NB.csv',
+        description: 'Implement the Naive Bayesian classifier for a sample training dataset.'
+      },
+      {
+        title: 'Bayesian Network',
+        programLink: 'Programs/bayes-network.py',
+        csvLink: 'Programs/network.csv',
+        description: 'Construct a Bayesian Network considering medical data and calculate accuracy, precision, and recall.'
+      },
+      {
+        title: 'K-Means Clustering',
+        programLink: 'Programs/k-means-cluster.py',
+        description: 'Apply the K-Means algorithm to cluster data points from a given CSV file.'
+      },
+      {
+        title: 'K-Nearest Neighbour (K-NN)',
+        programLink: 'Programs/k_nearest_neighbour.py',
+        description: 'Implement the K-Nearest Neighbour algorithm to classify data points from a dataset.'
+      },
+      {
+        title: 'Locally Weighted Regression',
+        programLink: 'Programs/regression.py',
+        description: 'Implement non-parametric Locally Weighted Regression to fit data points to a curve.'
+      }
+    ];
+
+    const fileListDiv = document.getElementById('file-list');
+
+    // Generate file list with actions
+    programs.forEach((program, index) => {
+      const fileRowDiv = document.createElement('div');
+      fileRowDiv.className = 'file-row';
+
+      const fileNameSpan = document.createElement('span');
+      fileNameSpan.textContent = `${index + 1}. ${program.title}: ${program.description}`;
+
+      const programButton = document.createElement('button');
+      programButton.className = 'button';
+      programButton.textContent = 'Download Program';
+      programButton.onclick = () => downloadFile(program.programLink);
+
+      const previewButton = document.createElement('button');
+      previewButton.className = 'button';
+      previewButton.textContent = 'Preview';
+      previewButton.onclick = () => previewFile(program.programLink);
+
+      if (program.csvLink) {
+        const csvButton = document.createElement('button');
+        csvButton.className = 'button';
+        csvButton.textContent = 'Download CSV';
+        csvButton.onclick = () => downloadFile(program.csvLink);
+        fileRowDiv.appendChild(csvButton);
+      }
+
+      fileRowDiv.appendChild(fileNameSpan);
+      fileRowDiv.appendChild(programButton);
+      fileRowDiv.appendChild(previewButton);
+      fileListDiv.appendChild(fileRowDiv);
+    });
+
+    function downloadFile(fileName) {
+      const link = document.createElement('a');
+      link.href = fileName;
+
+      // Fallback for older browsers
+      if (link.download !== undefined) {
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        window.location.href = fileName;
+      }
+    }
+
+    function previewFile(fileName) {
+      fetch(fileName)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('popup-title').textContent = fileName.split('/').pop();
+          document.getElementById('popup-content').textContent = data;
+          document.getElementById('overlay').style.display = 'block';
+          document.getElementById('popup').style.display = 'block';
+        })
+        .catch(error => console.error('Error fetching file:', error));
+    }
+
+    function closePopup() {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>
