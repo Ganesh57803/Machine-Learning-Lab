@@ -32,6 +32,20 @@ This repository contains solutions for the Machine Learning Lab experiments. Eac
    Write a program to construct a **Bayesian Network** considering medical data. This program should calculate the accuracy, precision, and recall for your dataset.
 
    **Link to program**: [Bayesian Network](Programs/bayes-network.py)--------[Input CSV](Programs/network.csv)
+### 7. **K-Means Clustering**
+   - **Description**: This program applies the K-Means algorithm to cluster data points from a given CSV file into groups.
+   - **Link to the program**: [K-Means Clustering Program](Programs/k-means-cluster.py)
+   - **ML Library**: Python ML libraries such as `sklearn` are used for implementation.
+
+### 8. **K-Nearest Neighbour (K-NN)**
+   - **Description**: This program implements the K-Nearest Neighbour algorithm to classify data points from a dataset, printing both correct and incorrect predictions.
+   - **Link to the program**: [K-Nearest Neighbour Program](Programs/k_nearest_neighbour.py)
+   - **ML Library**: Python ML libraries such as `sklearn` are used for implementation.
+
+### 9. **Locally Weighted Regression**
+   - **Description**: This program implements non-parametric Locally Weighted Regression to fit data points to a curve, with appropriate graph plotting.
+   - **Link to the program**: [Locally Weighted Regression Program](Programs/locally_weighted_regression.py)
+   - **ML Library**: Implemented using Python libraries like `numpy` and `matplotlib` for regression and graphing.
 
 ## Getting Started
 
