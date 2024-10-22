@@ -1,10 +1,6 @@
-I love this product!,pos
-This is the best experience I've ever had!,pos
-I am very satisfied with the service.,pos
-This was a terrible experience,neg
-I hated the movie.,neg
-The food was just okay,neg
-Absolutely fantastic! Highly recommend.,pos
-Not worth the money,neg
-I will definitely buy this again!,pos
-This is my new favorite item!,pos
+age,sex,fbs,trestbps,exang,heartdisease,restecg,thalach,chol
+29,0,1,120,0,0,1,150,240
+35,1,0,130,1,1,1,160,200
+40,0,1,140,0,1,1,170,250
+50,1,0,150,0,1,0,160,300
+60,0,1,160,1,1,0,140,280
