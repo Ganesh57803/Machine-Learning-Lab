@@ -7,12 +7,12 @@ This repository contains solutions for the Machine Learning Lab experiments. Eac
 1. ### Find-S Algorithm
    Implement and demonstrate the **Find-S algorithm** for finding the most specific hypothesis based on a given set of training data samples. The training data is read from a `.CSV` file.
 
-   **Link to program**: [Find-S Algorithm](Programs/first-find-s.py)
+   **Link to program**: [Find-S Algorithm](Programs/first-find-s.py) -----------[Input CSV](Programs/dataset-1.csv)
 
 2. ### Candidate Elimination Algorithm
    For a given set of training data stored in a `.CSV` file, implement and demonstrate the **Candidate-Elimination algorithm** to output a description of the set of all hypotheses consistent with the training examples.
 
-   **Link to program**: [Candidate Elimination Algorithm](Programs/candidate.py)
+   **Link to program**: [Candidate Elimination Algorithm](Programs/candidate.py) -----------[Input CSV](Programs/dataset-1.csv)
 
 3. ### Decision Tree (ID3 Algorithm)
    Write a program to demonstrate the working of a decision tree based on the **ID3 algorithm**. Use an appropriate dataset to build the decision tree and apply this knowledge to classify a new sample.
