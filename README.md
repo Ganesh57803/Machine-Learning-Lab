@@ -27,12 +27,11 @@ This repository contains solutions for the Machine Learning Lab experiments. Eac
 5. ### Naive Bayes Classifier
    Write a program to implement the **Naive Bayesian classifier** for a sample training dataset stored as a `.CSV` file. Compute the accuracy of the classifier, considering a few test datasets. Use built-in Java classes/API or Python to implement the Naive Bayesian Classifier model.
 
-   **Link to program**: [Naive Bayesian Classifier](link_to_your_program)
-
+   **Link to program**: [Naive Bayesian Classifier](Programs/NaiveBayes.py)--------[Input CSV](Programs/NB.csv)
 6. ### Bayesian Network
    Write a program to construct a **Bayesian Network** considering medical data. This program should calculate the accuracy, precision, and recall for your dataset.
 
-   **Link to program**: [Bayesian Network](link_to_your_program)
+   **Link to program**: [Bayesian Network]
 
 ## Getting Started
 
